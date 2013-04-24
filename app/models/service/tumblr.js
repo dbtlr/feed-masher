@@ -86,44 +86,61 @@ PostProcessor.prototype = {
   },
   
   processAsPhoto: function(post) {
-    // post.caption 
-    // post.photos
-      // post.photos[].caption
-      // post.photos[].altsizes
-        // post.photos[].altsizes[].height
-        // post.photos[].altsizes[].width
-        // post.photos[].altsizes[].url
-    
+    var data = {
+      title: '',
+      body: post.caption,
+      raw_body: S(post.caption).stripTags().s,
+      meta: { 
+        thumbnail_url: '',
+        thumbnail_width: '',
+        thumbnail_width: '',
+        photos: post.photos 
+      }
+    };
+
+    // Todo: Add default photo size finder.
+    return data;
   },
   
   processAsVideo: function(post) {
-    // post.caption
-    // post.permalink_url
-    // post.thumbnail_url
-    // post.thumbnail_width
-    // post.thumbnail_height
-    // post.html5_capable
-    // post.player
-      // post.player[].width
-      // post.player[].embed_code
+    var data = {
+      title: '',
+      body: post.caption,
+      raw_body: S(post.caption).stripTags().s,
+      meta: {
+        thumbnail_url: post.thumbnail_url,
+        thumbnail_width: post.thumbnail_width,
+        thumbnail_width: post.thumbnail_width,
+        permalink_url: post.permalink_url,
+        html5_capable: post.html5_capable,
+        player: post.player
+      }
+    };
     
+    return data;
   },
   
   processAsAudio: function(post) {
-    // post.source_url
-    // post.source_title
-    // post.id3_title
-    // post.caption
-    // post.player
-  
-    // Optional Audio ID3 Info
-      // post.album_art
-      // post.artist
-      // post.album
-      // post.track_name
-      // post.track_number
-      // post.year
+    var data = {
+      title: '',
+      body: post.caption,
+      raw_body: S(post.caption).stripTags().s,
+      meta: {
+        source_url: post.source_url,
+        source_title: post.source_title,
+        id3_title: post.id3_title,
+        html5_capable: post.html5_capable,
+        player: post.player,
+        thumbnail_url: post.album_art || null,
+        artist: post.artist || null,
+        album: post.album || null,
+        track_name: post.track_name || null,
+        track_number: post.track_number || null,
+        year: post.year || null
+      }
+    };
     
+    return data;
   },
   
   processAsLink: function(post) {
