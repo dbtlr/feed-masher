@@ -1,7 +1,21 @@
 doctype 5
 html
   head
-    title= title
+    title= title || "Hi"
+
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width')
+    link(rel='stylesheet', href='/stylesheets/libs/normalize.css')
+    link(rel='stylesheet', href='/stylesheets/libs/foundation.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='/javascripts/libs/vendor/custom.modernizr.js')
+    script(src='/javascripts/libs/vendor/jquery.js')
+    script(src='/javascripts/libs/vendor/zepto.js')
+
   body
+    
     block content
+
+    script(src='/javascripts/libs/foundation.min.js')
+    script
+      $(document).foundation();
