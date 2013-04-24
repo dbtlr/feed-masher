@@ -1,0 +1,12 @@
+/* TEAM */
+  Owner: Drew Butler
+  Contact: hi [at] dbtlr.com
+  Twitter: @nodrew
+  From: New York City, NY
+
+/* SITE */
+  Last update: 2013/04/24
+  Language: English
+  Doctype: HTML5, CSS3
+  Components: RequireJS, jQuery, Underscore, BasckboneJS, Zerb Foundation 4
+  IDE: Textmate 2
