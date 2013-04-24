@@ -14,7 +14,7 @@ exports.update = function() {
 
   config.tumblr.forEach(function(config) {
     var client = tumblr.createClient(config.credentials);
-    client.posts(config.blog, { limit: 20 }, function(err, response) {
+    client.posts(config.blog, { limit: 1 }, function(err, response) {
       response.posts.forEach(function(post) {
         if (post.state != 'published') return;
 
@@ -44,28 +44,28 @@ PostProcessor.prototype = {
 
     switch (post.type) {
       case 'text':
-        data = extend(data, this.processAsText(post));
+        data = extend(true, data, this.processAsText(post));
         break;
       case 'photo':
-        data = extend(data, this.processAsPhoto(post));
+        data = extend(true, data, this.processAsPhoto(post));
         break;
       case 'video':
-        data = extend(data, this.processAsVideo(post));
+        data = extend(true, data, this.processAsVideo(post));
         break;
       case 'audio':
-        data = extend(data, this.processAsAudio(post));
+        data = extend(true, data, this.processAsAudio(post));
         break;
       case 'link':
-        data = extend(data, this.processAsLink(post));
+        data = extend(true, data, this.processAsLink(post));
         break;
       case 'quote':
-        data = extend(data, this.processAsQuote(post));
+        data = extend(true, data, this.processAsQuote(post));
         break;
       case 'chat':
-        data = extend(data, this.processAsChat(post));
+        data = extend(true, data, this.processAsChat(post));
         break;
       case 'answer':
-        data = extend(data, this.processAsAnswer(post));
+        data = extend(true, data, this.processAsAnswer(post));
         break;
 
       default:
