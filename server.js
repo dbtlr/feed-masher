@@ -1,8 +1,6 @@
 var environment = require('./config/environment')
   , jobsPath = __dirname + '/app/jobs'
-  , argv = require('optimist')
-      .usage('Start local server environment')
-      .argv
+  , argv = require('optimist').argv
 ;
 
 console.log('Loading Feed Process Server');
