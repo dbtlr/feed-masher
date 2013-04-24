@@ -1,4 +1,5 @@
+var twitter = require('../models/service/twitter.js');
 
 exports.run = function() {
-  console.log('Updating the feeds.');
+  twitter.update();
 }
