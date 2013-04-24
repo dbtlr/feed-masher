@@ -76,11 +76,13 @@ PostProcessor.prototype = {
   },
   
   processAsText: function(post) {
-    return {
+    var data = {
       title: post.title,
       body: post.body,
       raw_body: S(post.body).stripTags().s
     };
+    
+    return data;
   },
   
   processAsPhoto: function(post) {
@@ -125,28 +127,36 @@ PostProcessor.prototype = {
   },
   
   processAsLink: function(post) {
-
-    // post.title 
-    // post.url 
-    // post.description
+    var data = {
+      title: post.title,
+      body: post.description,
+      raw_body: S(post.description).stripTags().s,
+      meta: { link_url: post.url }
+    };
+    
+    return data;
   },
   
   processAsQuote: function(post) {
-    // post.source_url
-    // post.source_title
-    // post.text
-    // post.source
+    var data = {
+      title: '',
+      body: post.text,
+      raw_body: S(post.text).stripTags().s,
+      meta: { source: post.source, source_url: post.source_url, source_title: post.source_title }
+    };
     
+    return data;
   },
   
   processAsChat: function(post) {
-    // For Chat Posts
-    // post.title
-    // post.body
-    // post.dialogue
-      // post.dialogue[].label
-      // post.dialogue[].name
-      // post.dialogue[].phrase
+    var data = {
+      title: post.title,
+      body: post.body,
+      raw_body: S(post.body).stripTags().s,
+      meta: { dialogue: post.dialogue }
+    };
+
+    return data;
     
   },
   
