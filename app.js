@@ -8,7 +8,7 @@ var express = require('express')
 
 var app = express();
 
-environment.create(app, express);
+environment.public(app, express);
 routes.handler(app);
 
 http.createServer(app).listen(app.get('port'), function(){

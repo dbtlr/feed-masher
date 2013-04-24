@@ -1,6 +1,6 @@
 var path = require('path');
 
-exports.create = function(app, express) {
+exports.public = function(app, express) {
   console.log(__dirname);
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/../app/views');
