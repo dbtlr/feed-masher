@@ -15,14 +15,17 @@ exports.update = function() {
         console.log(err);
         return;
       }
+
       reply.forEach(function(item) {
         var data = {
           original_id: item.id,
-          text: item.text,
-          source: item.source,
+          date: item.created_at,
+          type: 'twitter',
+          body: item.text,
           url: 'http://twitter.com/' + item.user.screen_name + '/status/' + item.id,
+          meta: { source: item.source }
         };
-        
+
         // Todo: save data to Mongo, when a status is new.
       });
     });
