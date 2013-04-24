@@ -157,13 +157,16 @@ PostProcessor.prototype = {
     };
 
     return data;
-    
   },
   
   processAsAnswer: function(post) {
-    // post.asking_name
-    // post.asking_url
-    // post.question
-    // post.answer
+    var data = {
+      title: post.question,
+      body: post.answer,
+      raw_body: S(post.answer).stripTags().s,
+      meta: { asking_name: post.asking_name, asking_url: post.asking_url }
+    };
+
+    return data;
   }
 };
