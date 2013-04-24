@@ -1,4 +1,5 @@
-var path = require('path');
+var path = require('path')
+  , assets = require('connect-assets');
 
 exports.public = function(app, express) {
   console.log(__dirname);
@@ -12,6 +13,7 @@ exports.public = function(app, express) {
   app.use(express.cookieParser('is it secret? is it safe?'));
   app.use(express.session());
   app.use(app.router);
+  app.use(assets())
   app.use(require('stylus').middleware(__dirname + '/../public'));
   app.use(express.static(path.join(__dirname, '../public')));
 
@@ -19,6 +21,9 @@ exports.public = function(app, express) {
   if (app.get('env') == 'development') {
     app.use(express.errorHandler());
   }
+
+  css.root = 'stylesheets'
+  js.root  = 'javascripts'
 }
 
 
