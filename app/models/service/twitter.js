@@ -6,6 +6,11 @@ exports.update = function() {
     var ts = new Twit(config.credentials);
 
     ts.get('statuses/user_timeline', { screen_name: config.screen_name, count: 10 }, function(err, reply) {
+      if (err != null) {
+        console.log('There was an error pull posts from Twitter for ' + config.screen_name);
+        console.log(err);
+        return;
+      }
       reply.forEach(function(item) {
         var data = {
           original_id: item.id,
