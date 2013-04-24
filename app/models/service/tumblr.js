@@ -19,7 +19,7 @@ exports.update = function() {
         if (post.state != 'published') return;
 
         data = processor.process(post);
-        console.log(data);
+        // Todo: save to mongo.
       });
     });
   });
