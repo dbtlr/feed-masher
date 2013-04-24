@@ -15,6 +15,12 @@ exports.update = function() {
   config.tumblr.forEach(function(config) {
     var client = tumblr.createClient(config.credentials);
     client.posts(config.blog, { limit: 1 }, function(err, response) {
+      if (err != null) {
+        console.log('There was an error pull posts from Tumblr for ' + config.blog);
+        console.log(err);
+        return;
+      }
+
       response.posts.forEach(function(post) {
         if (post.state != 'published') return;
 
