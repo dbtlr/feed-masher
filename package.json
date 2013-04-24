@@ -10,6 +10,7 @@
     "jade": "*",
     "stylus": "*",
     "optimist": "*",
-    "twit": "*"
+    "twit": "*",
+    "tumblr.js": "*"
   }
 }

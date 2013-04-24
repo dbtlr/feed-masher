@@ -2,6 +2,10 @@ var Twit = require('twit')
   , config = require('../../../config/services.json');
 
 exports.update = function() {
+  if (typeof config.twitter == 'undefined') {
+    return;
+  }
+
   config.twitter.forEach(function(config) {
     var ts = new Twit(config.credentials);
 
