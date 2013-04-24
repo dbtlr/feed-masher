@@ -68,40 +68,40 @@ PostProcessor.prototype = {
         data = extend(data, this.processAsAnswer(post));
         break;
 
-      default: 
+      default:
         console.log('Unknown post type ' + post.type + ' found.');
     }
 
     return data;
   },
-  
+
   processAsText: function(post) {
     var data = {
       title: post.title,
       body: post.body,
       raw_body: S(post.body).stripTags().s
     };
-    
+
     return data;
   },
-  
+
   processAsPhoto: function(post) {
     var data = {
       title: '',
       body: post.caption,
       raw_body: S(post.caption).stripTags().s,
-      meta: { 
+      meta: {
         thumbnail_url: '',
         thumbnail_width: '',
         thumbnail_width: '',
-        photos: post.photos 
+        photos: post.photos
       }
     };
 
     // Todo: Add default photo size finder.
     return data;
   },
-  
+
   processAsVideo: function(post) {
     var data = {
       title: '',
@@ -116,10 +116,10 @@ PostProcessor.prototype = {
         player: post.player
       }
     };
-    
+
     return data;
   },
-  
+
   processAsAudio: function(post) {
     var data = {
       title: '',
@@ -139,10 +139,10 @@ PostProcessor.prototype = {
         year: post.year || null
       }
     };
-    
+
     return data;
   },
-  
+
   processAsLink: function(post) {
     var data = {
       title: post.title,
@@ -150,10 +150,10 @@ PostProcessor.prototype = {
       raw_body: S(post.description).stripTags().s,
       meta: { link_url: post.url }
     };
-    
+
     return data;
   },
-  
+
   processAsQuote: function(post) {
     var data = {
       title: '',
@@ -161,10 +161,10 @@ PostProcessor.prototype = {
       raw_body: S(post.text).stripTags().s,
       meta: { source: post.source, source_url: post.source_url, source_title: post.source_title }
     };
-    
+
     return data;
   },
-  
+
   processAsChat: function(post) {
     var data = {
       title: post.title,
@@ -175,7 +175,7 @@ PostProcessor.prototype = {
 
     return data;
   },
-  
+
   processAsAnswer: function(post) {
     var data = {
       title: post.question,
