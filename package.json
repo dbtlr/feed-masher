@@ -11,6 +11,8 @@
     "stylus": "*",
     "optimist": "*",
     "twit": "*",
-    "tumblr.js": "*"
+    "tumblr.js": "*",
+    "node.extend": "*",
+    "string": "*"
   }
 }
