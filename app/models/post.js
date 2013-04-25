@@ -17,16 +17,16 @@ postSchema.index({ originalId: 1, type: 1, date: 1 });
 postSchema.set('autoIndex', false);
 
 postSchema.methods.saveOne = function() {
-  var item = this;
-  this.model('Post').findOne({ originalId: this.originalId }, function (error, m_item) {
+  var post = this;
+  this.model('Post').findOne({ originalId: this.originalId }, function (error, item) {
     if (error) {
       throw new Error(error);
     }
 
-    if (m_item) return;
+    if (item) return;
 
-    console.log('Recording ' + item.type + ' post #' + item.originalId);
-    item.save();
+    console.log('Recording ' + post.type + ' post #' + post.originalId);
+    post.save();
   });
 }
 
