@@ -19,10 +19,7 @@ postSchema.set('autoIndex', false);
 postSchema.methods.saveOne = function() {
   var post = this;
   this.model('Post').findOne({ originalId: this.originalId }, function (error, item) {
-    if (error) {
-      throw new Error(error);
-    }
-
+    if (error) throw new Error(error);
     if (item) return;
 
     console.log('Recording ' + post.type + ' post #' + post.originalId);
@@ -30,4 +27,4 @@ postSchema.methods.saveOne = function() {
   });
 }
 
-module.exports = database.model('Post', postSchema);
+module.exports = mongoose.model('Post', postSchema);
