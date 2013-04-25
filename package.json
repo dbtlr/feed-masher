@@ -11,6 +11,8 @@
     "connect-assets": "*",
     "stylus": "*",
     "nib": "*",
+    "mongodb": "*",
+    "mongoose": "*",
     "optimist": "*",
     "twit": "*",
     "tumblr.js": "*",

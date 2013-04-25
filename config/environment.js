@@ -1,7 +1,7 @@
 var path = require('path')
   , assets = require('connect-assets');
 
-exports.public = function(app, express) {
+module.exports.public = function(app, express) {
   console.log(__dirname);
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/../app/views');
@@ -27,6 +27,6 @@ exports.public = function(app, express) {
 }
 
 
-exports.process = function() {
+module.exports.process = function() {
   
 }

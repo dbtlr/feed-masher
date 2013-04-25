@@ -1,11 +1,12 @@
 var tumblr = require('tumblr.js')
   , extend = require('node.extend')
   , S = require('string')
-  , config = require('../../../config/services.json');
+  , config = require('../../../config/services.json')
+  , Post = require('../post');
 
 function PostProcessor() {}
 
-exports.update = function() {
+module.exports.update = function() {
   var processor = new PostProcessor();
 
   if (typeof config.tumblr == 'undefined') {
@@ -25,7 +26,9 @@ exports.update = function() {
         if (post.state != 'published') return;
 
         data = processor.process(post);
-        // Todo: save to mongo.
+
+        var post = new Post(data);
+        post.saveOne();
       });
     });
   });
@@ -34,7 +37,7 @@ exports.update = function() {
 PostProcessor.prototype = {
   process: function(post) {
     var data = {
-      original_id: post.id,
+      originalId: post.id,
       date: post.date, // post.timestamp
       url: post.post_url,
       type: 'tumblr',

@@ -1,4 +1,4 @@
 
-exports.home = function(req, res){
+module.exports.home = function(req, res){
   res.render('index/home', { title: 'Express' });
 };

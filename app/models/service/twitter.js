@@ -1,7 +1,8 @@
 var Twit = require('twit')
-  , config = require('../../../config/services.json');
+  , config = require('../../../config/services.json')
+  , Post = require('../post');
 
-exports.update = function() {
+module.exports.update = function() {
   if (typeof config.twitter == 'undefined') {
     return;
   }
@@ -18,7 +19,7 @@ exports.update = function() {
 
       reply.forEach(function(item) {
         var data = {
-          original_id: item.id,
+          originalId: item.id,
           date: item.created_at,
           type: 'twitter',
           body: item.text,
@@ -26,7 +27,8 @@ exports.update = function() {
           meta: { source: item.source }
         };
 
-        // Todo: save data to Mongo, when a status is new.
+        var post = new Post(data);
+        post.saveOne();
       });
     });
   });
